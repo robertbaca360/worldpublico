@@ -1,0 +1,42 @@
+<!-- Page Loader -->
+<div class="preloader">
+    <div id="loaderImage"></div>
+</div>
+<header id="navigation">
+  <div class="navbar animated fadeIn navbar-fixed-top" role="banner">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="<%= root_path %>">
+          <h1>
+            <%= image_tag 'landing/logo.png', alt: 'logo', class: 'img-responsive' %>
+          </h1>
+        </a>                    
+      </div>  
+      <nav class="collapse navbar-collapse navbar-right">         
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="index.html"><span>Home</span></a></li> 
+          <li><a href="#who-we-are"><span>Who We Are</span></a></li>                        
+          <li><a href="#cause-list"><span>Cause</span></a></li>
+          <li><a href="#recent-post"><span>News & Blog</span></a></li>
+          <li><a href="#our-member"><span>Volunteer</span></a></li> 
+          <li><a href="#photo-gallery"><span>Gallery</span></a></li>            
+          <li><a href="#contact"><span>Contact</span></a></li>            
+        </ul>         
+      </nav>
+      <div class="search">
+        <form role="form">
+          <i class="fa fa-search"></i>
+          <div class="field-toggle">
+            <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</header><!--/#navigation--> 

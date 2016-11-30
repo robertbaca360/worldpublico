@@ -1,0 +1,9 @@
+/*
+ *= require_tree ./landing
+ *= require font
+ *= require font-awesome
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
