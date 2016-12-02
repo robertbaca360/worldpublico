@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js css-menubar" lang="es">
   <head>
     <title>Worldpublico</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': false %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': false %>
   </head>
 
   <body>
     <%= render partial: '/layouts/partials/header' %>
+    <!-- Page Loader -->
+    <div class="preloader">
+        <div id="loaderImage"></div>
+    </div>
     <%= yield %>
   </body>
 </html>

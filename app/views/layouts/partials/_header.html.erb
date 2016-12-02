@@ -20,13 +20,20 @@
       </div>  
       <nav class="collapse navbar-collapse navbar-right">         
         <ul class="nav navbar-nav">
-          <li class="active"><a href="index.html"><span>Home</span></a></li> 
-          <li><a href="#who-we-are"><span>Who We Are</span></a></li>                        
-          <li><a href="#cause-list"><span>Cause</span></a></li>
-          <li><a href="#recent-post"><span>News & Blog</span></a></li>
-          <li><a href="#our-member"><span>Volunteer</span></a></li> 
-          <li><a href="#photo-gallery"><span>Gallery</span></a></li>            
-          <li><a href="#contact"><span>Contact</span></a></li>            
+          <li class="active"><a href="<%= root_path %>"><span>Home</span></a></li>  
+          <% if user_signed_in?%>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <span>Logout</span>
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to user_session_path do %>
+                <span>Login</span>
+              <% end %>
+            </li>
+          <% end %>        
         </ul>         
       </nav>
       <div class="search">

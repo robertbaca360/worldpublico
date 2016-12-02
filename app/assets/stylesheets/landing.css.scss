@@ -1,8 +1,12 @@
 /*
- *= require_tree ./landing
- *= require font
- *= require font-awesome
  *= require_self
+ *= require font-awesome
+ *= require ./landing/animate
+ *= require ./landing/prettyPhoto
+ *= require ./landing/main
+ *= require ./landing/preset1
+ *= require ./landing/responsive
+ *= require font
  */
 
 @import "bootstrap-sprockets";
