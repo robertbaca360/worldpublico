@@ -63,7 +63,10 @@ $(document).ready(function($) {
 			
 	}
 
-	menuToggle();	
+	var is_homepage = $('body').attr('class')
+	if (is_homepage == 'home') {
+		menuToggle();
+	}
 	
 	//Menu Scrolling
 	$('.navbar-nav').onePageNav({

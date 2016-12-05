@@ -29,6 +29,14 @@ class User < ApplicationRecord
     authorization.user
   end
 
+  def get_roles
+    user_roles = []
+    self.roles.each do |role|
+      user_roles << role.name
+    end
+    user_roles.to_sentence
+  end
+
   protected
     def assign_role
       role = self.category =~ /business|organization/ ? self.category : 'individual'

@@ -1,12 +1,10 @@
 class HomeController < ApplicationController
   layout :add_layout
-  # layout 'home', only: :index
 
   def index
   end
 
   def test
-    
   end
 
   private

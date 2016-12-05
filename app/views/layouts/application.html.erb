@@ -11,12 +11,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': false %>
   </head>
 
-  <body>
+  <body class="custom">
     <%= render partial: '/layouts/partials/header' %>
     <!-- Page Loader -->
     <div class="preloader">
         <div id="loaderImage"></div>
     </div>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

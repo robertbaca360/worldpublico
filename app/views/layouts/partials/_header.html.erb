@@ -20,7 +20,7 @@
       </div>  
       <nav class="collapse navbar-collapse navbar-right">         
         <ul class="nav navbar-nav">
-          <li class="active"><a href="<%= root_path %>"><span>Home</span></a></li>  
+          <!-- <li><a href="<%= root_path %>"><span>Home</span></a></li>   -->
           <% if user_signed_in?%>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
@@ -28,9 +28,14 @@
               <% end %>
             </li>
           <% else %>
-            <li>
+            <li class="active">
               <%= link_to user_session_path do %>
                 <span>Login</span>
+              <% end %>
+            </li>
+            <li class="active">
+              <%= link_to user_registration_path do %>
+                <span>SignUp</span>
               <% end %>
             </li>
           <% end %>        
