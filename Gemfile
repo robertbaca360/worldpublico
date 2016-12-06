@@ -65,3 +65,5 @@ gem 'omniauth-linkedin'
 gem 'rolify'
 
 gem 'figaro'
+
+gem "letter_opener", :group => :development
