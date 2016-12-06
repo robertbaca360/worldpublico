@@ -1,54 +1,53 @@
-<!-- Page Loader -->
-<div class="preloader">
-    <div id="loaderImage"></div>
-</div>
-<header id="navigation">
-  <div class="navbar animated fadeIn navbar-fixed-top" role="banner">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="<%= root_path %>">
-          <h1>
-            <%= image_tag 'landing/logo.png', alt: 'logo', class: 'img-responsive' %>
-          </h1>
-        </a>                    
-      </div>  
-      <nav class="collapse navbar-collapse navbar-right">         
-        <ul class="nav navbar-nav">
-          <!-- <li><a href="<%= root_path %>"><span>Home</span></a></li>   -->
-          <% if user_signed_in?%>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <span>Logout</span>
-              <% end %>
-            </li>
-          <% else %>
-            <li class="active">
-              <%= link_to user_session_path do %>
-                <span>Login</span>
-              <% end %>
-            </li>
-            <li class="active">
-              <%= link_to user_registration_path do %>
-                <span>SignUp</span>
-              <% end %>
-            </li>
-          <% end %>        
-        </ul>         
-      </nav>
-      <div class="search">
-        <form role="form">
-          <i class="fa fa-search"></i>
-          <div class="field-toggle">
-            <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+<header class="main-header">
+  <a class="logo header-logo blue_bg" data-no-turbolink="true" href="<%= root_path %>">
+    <%= image_tag('landing/logo.png', class: 'img-responsive default_header_logo', alt: 'Skilltapp') %>
+  </a>
+  <% if user_signed_in? %>
+    <nav class="navbar navbar-static-top" role="navigation">
+      <div class="pull-left search_header_form">
+        <%= form_tag "javascript:void(0)", method: :get, class: 'sidebar-form' do %>
+          <div class="input-group">
+            <%= text_field_tag :search_keyword, params[:search_keyword], placeholder: "Search...", class: 'form-control' %>
+            <span class="input-group-btn">
+              <button class="btn btn-flat" id="search-btn" type="submit">
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
           </div>
-        </form>
+        <% end %>
+        <ul class="nav navbar-nav">
+        </ul>
       </div>
-    </div>
-  </div>
-</header><!--/#navigation--> 
+      <div class="navbar-custom-menu" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="dropdown user user-menu">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <%= image_tag "profile_pic.png", alt: '', class: 'user-image' %>
+              <span class="hidden-xs">
+                <%= current_user.name %>
+              </span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image
+              -->
+              <li class="user-header">
+                <%= image_tag("profile_pic.png", alt: 'User Image', class: 'img-circle') %>
+                <p>
+                  <%= link_to current_user.name, "javascript:void(0)", 'data-no-turbolink' => true %>
+                </p>
+              </li>
+              <li class="user-footer header_profile_dropdown">
+                <div class="pull-left">
+                  <a class="btn btn-default btn-flat user_btn profile_btn" data-no-turbolink="true" href="javascript:void(0)">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-default btn-flat user_btn' %>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  <% end %>
+</header>

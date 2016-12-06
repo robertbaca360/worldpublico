@@ -12,13 +12,12 @@
  *
  *= require_self
  *= require font-awesome
- *= require ./landing/animate
- *= require ./landing/prettyPhoto
- *= require ./landing/main
- *= require ./landing/preset1
- *= require ./landing/responsive
+ *= require ./admin/custom
+ *= require ./admin/AdminLTE
+ *= require ./admin/all-skins
+ *= require ./admin/style
+ *= require fonts
  *= require custom
- *= require font
  */
 
 @import "bootstrap-sprockets";

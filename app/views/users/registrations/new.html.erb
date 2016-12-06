@@ -1,35 +1,43 @@
-<div class="container">
-  <div class="page-header">
-    <h1>Sign up</h1>
+<% provide(:body_class, 'hold-transition register-page') %>
+<div class="register-box">
+  <div class="register-logo">
+    <%= link_to(root_path) do %>
+      <b>WorldPublico</b>
+    <% end %>
   </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'contact-form', id: 'contact-form'}) do |f| %>
-            <%= devise_error_messages! %>
-            <div class="form-group">
-              <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true, placeholder: 'Email', class: 'form-control' %>
-            </div>
-            <div class="form-group">
-              <%= f.label :password %><br />
-              <%= f.password_field :password, autocomplete: 'off', placeholder: 'Password', class: 'form-control' %>
-            </div>
-            <div class="form-group">
-              <%= f.label :password_confirmation %><br />
-              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirm Password', class: 'form-control' %>
-            </div>
-            <div class="form-group">
-              <%= f.label :category %><br />
-              <%= f.select :category, options_for_select(Role.all.map{|r| [r.name.titleize, r.name]}), class: 'form-control' %>
-            </div>
-            <%= f.submit "Sign up", class: 'btn btn-primary' %>
+  <div class="register-box-body">
+    <p class="login-box-msg">Create a new account</p>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'contact-form', id: 'contact-form'}) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="social-auth-links text-center">
+        <% resource_class.omniauth_providers.each do |provider| %>
+          <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-block btn-social btn-flat btn-#{provider}" do %>
+            <i class="fa fa-<%= provider %>"></i><%= "Sign up using #{OmniAuth::Utils.camelize(provider)}" %>
           <% end %>
-          <%= render "users/shared/links" %>
+        <% end %>
+        <p>- OR -</p>
+      </div>
+      <div class="form-group has-feedback">
+        <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Retype Password' %>
+        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <%= f.select :category, options_for_select(Role.all.map{|r| [r.name.titleize, r.name]}), {}, class: 'form-control' %>
+      </div>
+      <div class="row">
+        <div class="col-xs-4 pull-right">
+          <%= f.submit "Sign Up", class: 'btn btn-primary btn-block btn-flat' %>
         </div>
       </div>
-    </div>
+    <% end %>
+    <a class="text-center" href="<%= new_user_session_path %>">I already have an account</a>
   </div>
 </div>

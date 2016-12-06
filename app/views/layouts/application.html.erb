@@ -11,14 +11,25 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': false %>
   </head>
 
-  <body class="custom">
-    <%= render partial: '/layouts/partials/header' %>
-    <!-- Page Loader -->
-    <div class="preloader">
-        <div id="loaderImage"></div>
+  <body class="<%= body_class(yield(:body_class)) %>">
+    <div class="wrapper">
+      <% unless user_signed_in? %>
+        <%= yield %>
+      <% else %>
+        <%= render partial: "layouts/partials/header" %>
+        <div class="content-wrapper user-wrapper">
+          <div class="channel_sidebar_mobile">
+            <%= render partial: 'layouts/sidebar/right_sidebar_mobile' %>
+          </div>
+          <div class="">
+            <%= yield %>
+          </div>
+        </div>
+        <div class="channel_sidebar">
+          <%= render partial: 'layouts/sidebar/right_sidebar' %>
+        </div>
+      <% end %>
     </div>
-    <div class="container">
-      <%= yield %>
-    </div>
+    
   </body>
 </html>
